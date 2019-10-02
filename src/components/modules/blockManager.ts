@@ -34,10 +34,6 @@ export default class BlockManager extends Module {
    */
   public set currentBlockIndex(newIndex: number) {
 
-    if (newIndex < 0) {
-      return;
-    }
-
     if (this._blocks[this._currentBlockIndex]) {
       this._blocks[this._currentBlockIndex].willUnselect();
     }
@@ -402,7 +398,7 @@ export default class BlockManager extends Module {
       this._blocks.remove(index);
     }
 
-    this.currentBlockIndex = 0;
+    this.currentBlockIndex = -1;
     this.insert();
     this.currentBlock.firstInput.focus();
   }
@@ -572,7 +568,7 @@ export default class BlockManager extends Module {
    * and clear highlightings
    */
   public dropPointer(): void {
-    this.currentBlockIndex = -1;
+    this.currentBlockIndex = 0;
     this.clearFocused();
   }
 
