@@ -33,6 +33,7 @@ export default class BlockManager extends Module {
    * @param newIndex
    */
   public set currentBlockIndex(newIndex: number) {
+
     if (this._blocks[this._currentBlockIndex]) {
       this._blocks[this._currentBlockIndex].willUnselect();
     }
@@ -508,6 +509,7 @@ export default class BlockManager extends Module {
    *  @throws Error  - when passed Node is not included at the Block
    */
   public setCurrentBlockByChildNode(childNode: Node): Block {
+
     /**
      * If node is Text TextNode
      */
@@ -566,7 +568,7 @@ export default class BlockManager extends Module {
    * and clear highlightings
    */
   public dropPointer(): void {
-    this.currentBlockIndex = -1;
+    this.currentBlockIndex = 0;
     this.clearFocused();
   }
 
