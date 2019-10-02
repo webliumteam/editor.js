@@ -223,7 +223,7 @@ export default class Caret extends Module {
   public setToBlock(block: Block, position: string = this.positions.DEFAULT, offset: number = 0): void {
     const {BlockManager} = this.Editor;
     let element;
-
+    if (!block) { return; }
     switch (position) {
       case this.positions.START:
         element = block.firstInput;

@@ -33,6 +33,11 @@ export default class BlockManager extends Module {
    * @param newIndex
    */
   public set currentBlockIndex(newIndex: number) {
+
+    if (newIndex < 0) {
+      return;
+    }
+
     if (this._blocks[this._currentBlockIndex]) {
       this._blocks[this._currentBlockIndex].willUnselect();
     }
@@ -397,7 +402,7 @@ export default class BlockManager extends Module {
       this._blocks.remove(index);
     }
 
-    this.currentBlockIndex = -1;
+    this.currentBlockIndex = 0;
     this.insert();
     this.currentBlock.firstInput.focus();
   }
@@ -508,6 +513,7 @@ export default class BlockManager extends Module {
    *  @throws Error  - when passed Node is not included at the Block
    */
   public setCurrentBlockByChildNode(childNode: Node): Block {
+    console.log('set current block child node.......');
     /**
      * If node is Text TextNode
      */
