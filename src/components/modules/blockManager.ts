@@ -513,7 +513,7 @@ export default class BlockManager extends Module {
    *  @throws Error  - when passed Node is not included at the Block
    */
   public setCurrentBlockByChildNode(childNode: Node): Block {
-    console.log('set current block child node.......');
+
     /**
      * If node is Text TextNode
      */
