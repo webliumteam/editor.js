@@ -106,17 +106,17 @@ export default class BlockEvents extends Module {
     const block = BlockManager.getBlock(event.target);
 
     /**
-     * Conversion Toolbar will be opened when user selects 85% of plugins content
+     * Conversion Toolbar will be opened when user selects 85% of plugins content - we skip the step, always show inlineToolbar
      * that why we must with the length of pluginsContent
      */
-    if (SelectionUtils.almostAllSelected(block.pluginsContent.textContent)) {
-      InlineToolbar.close();
-      BlockSettings.close();
-      ConversionToolbar.tryToShow(block);
-    } else {
-      ConversionToolbar.close();
-      InlineToolbar.tryToShow(true);
-    }
+    // if (SelectionUtils.almostAllSelected(block.pluginsContent.textContent)) {
+    //   InlineToolbar.close();
+    //   BlockSettings.close();
+    //   ConversionToolbar.tryToShow(block);
+    // } else {
+    ConversionToolbar.close();
+    InlineToolbar.tryToShow(true);
+    // }
 
     /**
      * Check if editor is empty on each keyup and add special css class to wrapper
@@ -137,14 +137,15 @@ export default class BlockEvents extends Module {
      */
     _.delay(() => {
       /**
-       * 1) selected 85% of block - open Conversion Toolbar
+       * 1) selected 85% of block - open Conversion Toolbar - we skip the step
        * 2) select something inside block - open Inline Toolbar
        * 3) nothing selected - close Toolbars
        */
-      if (SelectionUtils.almostAllSelected(block.pluginsContent.textContent)) {
-        InlineToolbar.close();
-        ConversionToolbar.tryToShow(block);
-      } else if (!SelectionUtils.isCollapsed) {
+      // if (SelectionUtils.almostAllSelected(block.pluginsContent.textContent)) {
+      //   InlineToolbar.close();
+      //   ConversionToolbar.tryToShow(block);
+      // } else if (!SelectionUtils.isCollapsed) {
+      if (!SelectionUtils.isCollapsed) {
         InlineToolbar.tryToShow();
         ConversionToolbar.close();
       } else {
