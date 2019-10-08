@@ -572,7 +572,9 @@ export default class UI extends Module {
       const isEmptyBlock = this.Editor.BlockManager.currentBlock.isEmpty;
 
       if (isEmptyBlock) {
-        this.Editor.Toolbar.plusButton.show();
+        _.delay(() => {
+          this.Editor.Toolbar.plusButton.show();
+        }, 50)();
       }
     }
   }
