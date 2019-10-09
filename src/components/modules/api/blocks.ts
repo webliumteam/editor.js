@@ -156,13 +156,14 @@ export default class BlocksAPI extends Module {
     index?: number,
     needToFocus?: boolean,
   ): void => {
-    this.Editor.BlockManager.insert(
+    const newBlock = this.Editor.BlockManager.insert(
       type,
       data,
       config,
       index,
       needToFocus,
     );
+    this.Editor.Caret.setToBlock(newBlock);
   }
 
   /**
