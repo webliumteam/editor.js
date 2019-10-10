@@ -92,7 +92,7 @@ export default class BlocksAPI extends Module {
     if (this.Editor.BlockManager.currentBlockIndex === 0) {
       this.Editor.Caret.setToBlock(this.Editor.BlockManager.currentBlock);
     } else {
-      this.Editor.Caret.navigatePrevious(true);
+      this.Editor.Caret.setToBlock(this.Editor.BlockManager.currentBlock, 'end');
     }
 
     this.Editor.Toolbar.close();
